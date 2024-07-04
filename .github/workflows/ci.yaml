@@ -1,16 +1,15 @@
-name: ci-sonnar
-on: 
+name: ci-sonarcloud
+on:
   pull_request:
     branches:
       - develop
+
 jobs:
-  ci-run:
+  run-ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
           go-version: 1.15
-      - run: go test -converprofile=coverage.out
-
-    
+      - run: go test -coverprofile=coverage.out
